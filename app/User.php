@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function question(){
+        return $this->hasMany(Question::class);
+    }
+
+    public function categories(){
+        return $this->morphToMany(Category::class , 'user_interest');
+    }
 }

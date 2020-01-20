@@ -1,4 +1,6 @@
 <?php
+use App\User;
+use App\Expert;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,6 +12,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
+// Route::get('/','AnswerController@index');
+
+Route::get('/users', function(){
+
+    return 'hello world';
+    
+});
 
 Route::get('/', function () {
     return view('welcome');

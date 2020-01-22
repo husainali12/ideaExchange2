@@ -1,9 +1,14 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css");
 
-// Variables
-@import "variables";
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import '~vuetify/dist/vuetify.min.css';
+
+// // Variables
+// @import "variables";
+
+// // Bootstrap
+// @import "~bootstrap-sass/assets/stylesheets/bootstrap";

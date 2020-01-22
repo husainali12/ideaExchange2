@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -36,13 +36,27 @@ return [
     */
 
     'guards' => [
+        'expert' => [
+            'driver' => 'session',
+            'provider' => 'experts',
+        ],
+        'expert-api' => [
+            'driver' => 'jwt',
+            'provider' => 'experts',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
     ],
@@ -65,6 +79,16 @@ return [
     */
 
     'providers' => [
+        'experts' => [
+            'driver' => 'eloquent',
+            'model' => App\Expert::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
@@ -92,6 +116,18 @@ return [
     */
 
     'passwords' => [
+        'experts' => [
+            'provider' => 'experts',
+            'table' => 'expert_password_resets',
+            'expire' => 60,
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'admin_password_resets',
+            'expire' => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

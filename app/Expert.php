@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Notifications\ExpertResetPassword;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Expert extends Authenticatable
+class Expert extends Authenticatable implements JWTSubject
 {
-    //
     use Notifiable;
 
     /**
@@ -28,11 +29,37 @@ class Expert extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ExpertResetPassword($token));
+    }
+
     public function answers(){
         return $this->hasMany(Answer::class);
     }
 
     public function categories(){
         return $this->morphToMany(Category::class , 'user_interest');
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

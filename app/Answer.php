@@ -13,7 +13,7 @@ class Answer extends Model
     public function expert(){
         return $this->belongsTo(Expert::class);
     }
-    // public function like(){
-    //     return $this->hasMany(Like::class);
-    // }
+    public function upvotes(){
+        return $this->hasMany(UpVote::class);
+    }
 }

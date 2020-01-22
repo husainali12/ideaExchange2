@@ -20,3 +20,35 @@ use Illuminate\Http\Request;
 Route::get('/user',function(){
     return 'hello';
 });
+
+Route::apiResource('/question','QuestionController');
+
+Route::group([
+
+    'middleware' => 'api',
+   // 'namespace' => 'App\Http\Controllers',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+});
+
+Route::group([
+
+    'middleware' => 'api',
+   // 'namespace' => 'App\Http\Controllers',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('expert/login', 'ExpertAuth\AuthController@login');
+    Route::post('expert/logout', 'ExpertAuth\AuthController@logout');
+    Route::post('expert/refresh', 'ExpertAuth\AuthController@refresh');
+    Route::post('expert/me', 'ExpertAuth\AuthController@me');
+
+});

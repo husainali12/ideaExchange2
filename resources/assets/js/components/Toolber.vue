@@ -1,25 +1,60 @@
 <template>
-  <v-toolbar dense>
-      <v-toolbar-title>Idea Exchange</v-toolbar-title>
+ <v-toolbar dense>
+    <v-toolbar-title>Idea Exchange</v-toolbar-title>
 
-      <v-spacer></v-spacer>
+    <v-divider
+      class="mx-4"
+      inset
+      vertical
+    ></v-divider>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
+    <span class="subheading">My Home</span>
+
+    <v-spacer></v-spacer>
+
+    <v-toolbar-items class="hidden-sm-and-down">
+     
+      <v-btn text>
+        Fourm
       </v-btn>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+      <v-divider
+        inset
+        vertical
+      ></v-divider>
+
+       <v-btn text @click="loginPage">
+        Login
       </v-btn>
 
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
+      <v-divider
+        inset
+        vertical
+      ></v-divider>
+
+      <!-- <v-btn text>
+        Music
       </v-btn>
-    </v-toolbar>
+
+      <v-divider
+        inset
+        vertical
+      ></v-divider> -->
+    </v-toolbar-items>
+
+    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+  </v-toolbar>
+ 
 </template>
 
 <script>
 export default {
+
+  methods:{
+    loginPage(){
+      EventBus.$emit('login');
+    }
+  }
 
 }
 </script>

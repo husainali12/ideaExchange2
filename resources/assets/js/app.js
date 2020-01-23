@@ -9,13 +9,14 @@ require('./bootstrap');
 import Vue from 'vue'
 
 window.Vue = require('vue');
+window.EventBus = new Vue;
 
 import vuetify from './vuetify/index'
 
-// Vue.use(vuetify)
+//Vue.use(vuetify)
 
 
-Vue.component('AppHome', require('./components/AppHome.vue'));
+Vue.component('AppHome', require('./components/AppHome.vue').default);
 
 import router from './Router/router'
 

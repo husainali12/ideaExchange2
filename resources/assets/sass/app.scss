@@ -4,11 +4,18 @@
 @import url("https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css");
 
 
-
 @import '~vuetify/dist/vuetify.min.css';
 
-// // Variables
-// @import "variables";
+  //@import '~vuetify/src/styles/styles.sass';
 
-// // Bootstrap
-// @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+
+
+
+
+ // Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";

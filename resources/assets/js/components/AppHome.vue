@@ -1,20 +1,42 @@
 <template>
   <div>
+      
+      <div v-if="!loginPage">
       <toolber></toolber> 
-      <appfooter></appfooter> 
+      </div>
+      <login v-if="loginPage"></login>
+
+  
+<appfooter></appfooter> 
   </div>
+  
+
 </template>
 
 <script>
 import toolber from './Toolber'
 import Appfooter from './AppFooter'
+import Login from './Login/Login'
 export default {
 
-    components:{toolber,Appfooter}
+    components:{toolber,Appfooter,Login},
+    data(){
+        return{
+            loginPage:false,
+        }
+    },
+    created(){
+        EventBus.$on('login',()=>{
+
+                this.loginPage = true;
+
+            })
+    }
 
 }
 </script>
 
-<style>
+<style lang="sass" scoped>
 
 </style>
+
